@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-charcoal: #17181B;
+  --color-charcoal-light: #232529;
+  --color-stone-white: #FFFFFF;
+  --color-fleck: #6E7178;
+  --color-light-stone: #B8BAC0;
+  --color-mist: #F3F3F4;
+  --color-deep-blue: #1D3E8C;
+  --color-deep-blue-hover: #16307A;
+  --color-brass: #C9A961;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--color-stone-white);
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
+
+/* Granite speckle texture overlay for dark sections */
+.speckle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(circle at 12% 22%, rgba(255,255,255,0.06) 0, transparent 1px),
+    radial-gradient(circle at 34% 68%, rgba(255,255,255,0.05) 0, transparent 1px),
+    radial-gradient(circle at 58% 15%, rgba(255,255,255,0.07) 0, transparent 1.5px),
+    radial-gradient(circle at 76% 46%, rgba(255,255,255,0.04) 0, transparent 1px),
+    radial-gradient(circle at 88% 80%, rgba(255,255,255,0.06) 0, transparent 1.5px),
+    radial-gradient(circle at 20% 88%, rgba(255,255,255,0.05) 0, transparent 1px),
+    radial-gradient(circle at 45% 40%, rgba(255,255,255,0.04) 0, transparent 1px);
+  background-size: 180px 180px;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-card-dark {
+  background: rgba(35, 37, 41, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Stone-yard spec tag styling */
+.spec-tag {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+  border: 1px dashed rgba(110, 113, 120, 0.4);
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-mist); }
+::-webkit-scrollbar-thumb { background: var(--color-light-stone); border-radius: 8px; }
+
+:focus-visible {
+  outline: 2px solid var(--color-deep-blue);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
